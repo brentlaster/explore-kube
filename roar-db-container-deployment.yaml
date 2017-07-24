@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: roar-db-container
+  name: roar-db-container
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: roar-db-container
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_DATABASE
+          value: registry
+        - name: MYSQL_PASSWORD
+          value: admin
+        - name: MYSQL_ROOT_PASSWORD
+          value: root+1
+        - name: MYSQL_USER
+          value: admin
+        image: bclaster/roar-db-image
+        name: roar-db-container
+        ports:
+        - containerPort: 3306
+        resources: {}
+      restartPolicy: Always
+status: {}
