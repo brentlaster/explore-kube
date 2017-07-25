@@ -24,7 +24,7 @@ spec:
           value: root+1
         - name: MYSQL_USER
           value: admin
-        image: bclaster/roar-db-image
+        image: bclaster/ref-db-image
         name: roar-db-container
         ports:
         - containerPort: 3306

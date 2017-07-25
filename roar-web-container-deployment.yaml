@@ -15,7 +15,7 @@ spec:
         io.kompose.service: roar-web-container
     spec:
       containers:
-      - image: bclaster/roar-web-image
+      - image: bclaster/ref-web-image
         name: roar-web-container
         ports:
         - containerPort: 8080
