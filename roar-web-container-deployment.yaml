@@ -15,7 +15,10 @@ spec:
         io.kompose.service: roar-web-container
     spec:
       containers:
-      - image: bclaster/ref-web-image
+      - env:
+        - name: MYSQL_PORT_3306_TCP_ADDR
+          value: roar-db-container
+        image: bclaster/ref-web-image
         name: roar-web-container
         ports:
         - containerPort: 8080

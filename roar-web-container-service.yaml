@@ -12,5 +12,6 @@ spec:
     targetPort: 8080
   selector:
     io.kompose.service: roar-web-container
+  type: LoadBalancer
 status:
   loadBalancer: {}

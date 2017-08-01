@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Pod
+metadata:
+  name: roar-containers
+spec:
+
+  restartPolicy: Never
+  
+  volumes:
+  - name: shared-data
+    emptyDir: {}
+
+  containers:
+  - name: web-container
+    image: bclaster/ref-web-image
+    env:
+    - name: MYSQL_PORT_3306_TCP_ADDR
+      value: roar-db-container
+    ports:
+    - containerPort: 8080
+    resources: {}
+
+  - name: db-container
+    image: bclaster/ref-db-image
+    env:
+    - name: MYSQL_DATABASE
+      value: registry
+    - name: MYSQL_PASSWORD
+      value: admin
+    - name: MYSQL_ROOT_PASSWORD
+      value: root+1
+    - name: MYSQL_USER
+      value: admin
+    ports:
+    - containerPort: 3306
+    resources: {}
+
+status: {}
